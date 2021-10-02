@@ -1,0 +1,5 @@
+import pandas as pd
+df = pd.read_csv("/content/main.csv")
+df1 = df.groupby('occupation').agg({'age': ['min', 'max']}) 
+
+df1.to_csv('/content/output1.csv')
