@@ -1,0 +1,10 @@
+import pandas as pd
+df = pd.read_csv("/content/main.csv")
+df['Year'] = (df['Year'].apply(lambda x: str(x)[:3])).astype('category')
+df1 = df.groupby('Year', as_index=False)['Population','Total','Violent','Property','Murder','Forcible_Rape','Robbery','Aggravated_assault','Burglary','Larceny_Theft','Vehicle_Theft'].sum()
+df1['Year'] = (df1['Year'].apply(lambda x: str(x)+'0')).astype('category')
+
+df1.to_csv('/content/output.csv')
+
+
+
